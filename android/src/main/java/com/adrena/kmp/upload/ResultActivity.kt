@@ -2,6 +2,7 @@ package com.adrena.kmp.upload
 
 import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
@@ -98,12 +99,12 @@ class ResultActivity : AppCompatActivity(), CoroutineScope {
         mConfidenceText.text = ocr.confidence.toString()
     }
 
-    private suspend fun compressImage(outputPath: String) {
-        withContext(Dispatchers.IO) {
-            BitmapUtils.compressImage(
-                this@ResultActivity,
-                mCameraUri,
-                destinationPath = outputPath)
-        }
+    private fun compressImage(outputPath: String) {
+
+        BitmapUtils.compressImage(
+            this@ResultActivity,
+            mCameraUri,
+            destinationPath = outputPath)
+
     }
 }
