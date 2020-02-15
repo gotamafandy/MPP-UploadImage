@@ -65,10 +65,10 @@ class ResultActivity : AppCompatActivity(), CoroutineScope {
             val cachePath = FileUtils.createFile(this@ResultActivity, "cache")?.absolutePath
                 ?: throw IllegalArgumentException("Unable to create cache path")
 
-            val compress = async(Dispatchers.IO) { compressImage(cachePath) }
+            compressImage(cachePath)
 
-            compress.await()
-
+            Log.d("DUDIDAM", "THREAD: ${Thread.currentThread()}")
+            
             mViewModel.inputs.execute(cachePath)
         }
     }
@@ -99,12 +99,12 @@ class ResultActivity : AppCompatActivity(), CoroutineScope {
         mConfidenceText.text = ocr.confidence.toString()
     }
 
-    private fun compressImage(outputPath: String) {
-
-        BitmapUtils.compressImage(
-            this@ResultActivity,
-            mCameraUri,
-            destinationPath = outputPath)
-
+    private suspend fun compressImage(outputPath: String) {
+        withContext(Dispatchers.IO) {
+            BitmapUtils.compressImage(
+                this@ResultActivity,
+                mCameraUri,
+                destinationPath = outputPath)
+        }
     }
 }
