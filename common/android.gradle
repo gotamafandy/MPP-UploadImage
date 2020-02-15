@@ -1,0 +1,40 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android-extensions'
+
+android {
+    compileSdkVersion 29
+    buildToolsVersion "29.0.2"
+    defaultConfig {
+        minSdkVersion 21
+        targetSdkVersion 29
+        versionCode 1
+        versionName "1.0"
+    }
+    buildTypes {
+        release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    sourceSets.each {
+        it.manifest.srcFile "src/androidMain/AndroidManifest.xml"
+    }
+
+    lintOptions {
+        abortOnError false
+    }
+}
+
+dependencies {
+    implementation "com.github.aakira:napier-android:$napier_version"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib"
+
+    implementation "org.jetbrains.kotlinx:kotlinx-serialization-runtime:$serialization_version"
+
+    // HTTP
+    implementation "io.ktor:ktor-client-android:$ktor_version"
+    implementation "io.ktor:ktor-client-core-jvm:$ktor_version"
+    implementation "io.ktor:ktor-client-json-jvm:$ktor_version"
+    implementation "com.squareup.okhttp3:logging-interceptor:4.3.1"
+    implementation "io.ktor:ktor-client-serialization-jvm:$ktor_version"
+}

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="VcsDirectoryMappings">
+    <mapping directory="$PROJECT_DIR$/CleanArchitecture" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/MoviesMPP" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/Reaktive" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/ReaktiveTutorial" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/kotlin-multiplatform-sample" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/kotlin-native" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/mpp-example" vcs="Git" />
+  </component>
+</project>
