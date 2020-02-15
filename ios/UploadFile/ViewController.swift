@@ -165,7 +165,6 @@ extension ViewController: UIImagePickerControllerDelegate, UINavigationControlle
         if let image = savedImage {
             saveFile(image: image, completion: { [weak self] in
                 if let url = $0 {
-                    print("RUN")
                     self?._viewModel.inputs.execute(request_: url)
                 }
             })
